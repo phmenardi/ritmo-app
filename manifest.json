@@ -1,0 +1,19 @@
+{
+  "name": "Ritmo - Minha Rotina",
+  "short_name": "Ritmo",
+  "description": "Sua rotina, no seu ritmo.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#050505",
+  "orientation": "portrait-primary",
+  "categories": ["productivity", "health", "lifestyle"],
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

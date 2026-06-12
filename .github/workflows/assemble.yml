@@ -1,0 +1,36 @@
+name: Assemble app files
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.build/**'
+
+permissions:
+  contents: write
+
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild source files
+        shell: bash
+        run: |
+          if [ ! -f .build/app.js.gz.b64 ] || [ ! -f .build/styles.css.gz.b64 ]; then
+            exit 0
+          fi
+          base64 -d .build/app.js.gz.b64 | gzip -d > app.js
+          base64 -d .build/styles.css.gz.b64 | gzip -d > styles.css
+          rm -rf .build
+      - name: Commit assembled files
+        shell: bash
+        run: |
+          if git diff --quiet && [ -z "$(git status --porcelain)" ]; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Publica aplicativo Ritmo"
+          git push

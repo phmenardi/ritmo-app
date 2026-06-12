@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#050505" />
+    <meta name="description" content="Organize sua rotina, hábitos, tarefas, treinos e metas." />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Ritmo</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-heading">
+          <div class="brand-mark" aria-hidden="true">R</div>
+          <div>
+            <p class="eyebrow" id="today-label"></p>
+            <h1 id="page-title">Meu Dia</h1>
+          </div>
+        </div>
+        <div class="top-actions">
+          <span class="save-status" id="save-status">Salvo</span>
+          <button class="icon-button notification-button" id="notification-button" aria-label="Configurar notificações">
+            <span aria-hidden="true">♢</span>
+            <span class="notification-dot" id="notification-dot"></span>
+          </button>
+          <button class="icon-button" id="theme-button" aria-label="Alternar tema">☾</button>
+        </div>
+      </header>
+
+      <main id="app-content"></main>
+
+      <nav class="bottom-nav" aria-label="Navegação principal">
+        <button class="nav-item active" data-page="home">
+          <span class="nav-icon">⌂</span><span>Hoje</span>
+        </button>
+        <button class="nav-item" data-page="habits">
+          <span class="nav-icon">✓</span><span>Hábitos</span>
+        </button>
+        <button class="nav-item" data-page="tasks">
+          <span class="nav-icon">☷</span><span>Tarefas</span>
+        </button>
+        <button class="nav-item" data-page="workouts">
+          <span class="nav-icon">◆</span><span>Treinos</span>
+        </button>
+        <button class="nav-item" data-page="goals">
+          <span class="nav-icon">◎</span><span>Metas</span>
+        </button>
+      </nav>
+    </div>
+
+    <div class="modal-backdrop hidden" id="modal-backdrop">
+      <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-header">
+          <h2 id="modal-title"></h2>
+          <button class="icon-button" id="close-modal" aria-label="Fechar">×</button>
+        </div>
+        <form id="modal-form"></form>
+      </section>
+    </div>
+
+    <div class="toast" id="toast" role="status"></div>
+    <input class="hidden-file" id="backup-file" type="file" accept="application/json" />
+    <script src="app.js"></script>
+  </body>
+</html>
